@@ -44,16 +44,15 @@
 	--color-h1: var(--color-light-beige);
 	--color-h2: var(--color-dark-green);
 	--color-text-header: var(--color-light-beige);
+	--color-header-link-hover: var(--color-green);
+	--color-header-link-hover-underline: var(--color-light-beige);
 	--color-footer-h2: var(--color-white);
 	--color-footer-h3: var(--color-orange);
 	--color-footer-text: var(--color-light-gray);
-	--color-header-link-hover: var(--color-green);
-	--color-header-link-hover-underline: var(--color-light-beige);
 	--color-footer-links-hover: var(--color-white);
 
-	/*override page-wide styling of links*/
-
-	/*Otros colores*/
+	/*Colores de otros elementos*/
+	--color-footer-hr: var(--color-light-gray);
 }
 
 /* Base styles */
@@ -236,6 +235,7 @@ footer {
 	overflow: hidden;
 }
 
+/* Se aplica a la imagen recycle.png */
 .take-action-section img {
 	max-width: 80%;
 }
@@ -302,47 +302,43 @@ footer menu {
 	padding: 0;
 }
 
-/* Footer links */
-footer li {
-	list-style-type: none;
-	margin-top: 6px;
-	margin-bottom: 6px;
-}
-
-/* Social media icons */
-
-footer .social-icons {
-	display: flex; /* Organizar los iconos sociales en una fila*/
-	justify-content: center; /* Centrar los iconos sociales */
-	gap: 15px; /* Espacio entre los iconos sociales */
-	margin-top: 20px; /* Espacio entre los iconos sociales y la línea horizontal */
-}
-
-footer a {
-	color: var(--color-footer-text); /* Social icons color */
-	font-size: 24px;
-	text-decoration: none; /*Quitar el subrayado pretermindado de los iconos sociales */
-	transition: color 0.3s ease; /* Efecto de transición para los iconos sociales */
-	cursor: pointer;
-}
-
-.footer-link:hover {
-	color: var(--color-footer-links-hover); /* Hover effect for social icons */
-}
-
-/* Centrar los iconos sociales y añadir espacio entre cada uno  */
+/* Elementos de los nav menus*/
 footer li {
 	margin: 10px 0;
 	display: flex;
 	justify-content: center;
-	line-height: 1.25;
+	list-style-type: none;
 }
 
-footer span {
+/* Clase genérica para todos los enlaces del footer */
+.footer-link {
+	color: var(--color-footer-text); /* Social icons color */
+	text-decoration: none; /*Quitar el subrayado pretermindado de los iconos sociales */
+	transition: color 0.3s ease; /* Efecto de transición para los iconos sociales */
+	cursor: pointer;
+}
+.footer-link:hover {
+	color: var(--color-footer-links-hover); /* Hover effect for social icons */
+}
+
+/* Posicionar los iconos de contacto  */
+footer .contact-icon {
 	margin-right: 20px;
 	margin-top: 3px;
 }
 
-footer .contact-details a {
-	color: var(--color-footer-text);
+/* Social media icons */
+footer .social-icons-menu {
+	display: flex; /* Organizar los iconos sociales en una fila*/
+	justify-content: center; /* Centrar los iconos sociales */
+	gap: 15px; /* Espacio entre los iconos sociales */
+	font-size: 1.5rem; /* Tamaño de los iconos sociales */
+}
+
+footer hr {
+	margin: 30px 10px 40px 10px; /* Para ampliar la distancia entre la línea horizontal y los elementos de la lista de navegación */
+	height: 1px;
+	background-color: var(--color-footer-hr);
+	color: var(--color-footer-hr);
+	border: none;
 }
