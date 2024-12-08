@@ -274,10 +274,22 @@ footer {
 }
 
 /*********************************************************** CONTACT  PAGE***********************************************************/
-
+/***************** Contact Form***********************/
 .contact-article {
 	text-align: left;
 }
+
+.contact-article .hero {
+	margin: 0;
+	background-color: var(--color-light-green);
+	text-align: center;
+}
+
+.contact-article .hero h1 {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+}
+
 .contact-form-section fieldset {
 	text-align: left;
 	margin-bottom: 25px;
@@ -315,9 +327,6 @@ label[for="email"] {
 }
 
 label[for="country-code"] {
-	max-width: calc(
-		50% - 10px
-	); /*Substraer el margen para que los elementos no se desborden */
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
@@ -331,7 +340,8 @@ label[for="phone"] {
 	flex-direction: column; /*Para que la etiqeta y el input estén en una columna */
 }
 
-.message-information-fieldset textarea {
+.message-information-fieldset textarea,
+input[type="text"] {
 	padding: 10px;
 	box-sizing: border-box;
 	width: 100%;
@@ -354,6 +364,7 @@ input[id="user"] {
 
 .required-asterisk {
 	color: var(--color-orange);
+	display: contents; /* Para que el asterisco se muestre en la misma línea que el texto a pesar de flex-direction: column*/
 }
 
 button[form="contact-form"] {
@@ -369,8 +380,18 @@ button[form="contact-form"] {
 .contact-form-section ::placeholder {
 	font-style: italic;
 }
+/***************** Contact Information ***********************/
 
 /***************** Footer ***********************/
+address {
+	display: inline-block; /* Para que el contenido de la dirección esté en la misma línea que la etiqueta */
+}
+
+.contact-information-section {
+	text-align: center;
+	background-color: var(--color-light-beige);
+	margin: 50px 10px;
+}
 
 footer {
 	background-color: var(--color-bg-footer);
