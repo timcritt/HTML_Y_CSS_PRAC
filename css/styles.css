@@ -37,6 +37,7 @@
 	--color-bg-footer: var(--color-darker-green);
 	--color-bg-contact-button: var(--color-orange);
 	--color-bg-current-page-link: var(--color-slightly-lighter-green);
+	--color-bg-contact-form-button: var(--color-green);
 
 	/*Colores de texto*/
 	--color-text-primary: var(--color-dark-green);
@@ -50,6 +51,7 @@
 	--color-footer-h3: var(--color-orange);
 	--color-footer-text: var(--color-light-gray);
 	--color-footer-links-hover: var(--color-white);
+	--color-contact-form-button-text: var(--color-white);
 
 	/*Colores de otros elementos*/
 	--color-footer-hr: var(--color-light-gray);
@@ -61,13 +63,13 @@ html {
 	color: var(--color-text-primary);
 	font-size: 18px;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 /* Quitar el margen y el relleno predeterminado */
 body {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
 }
 
 main {
@@ -149,7 +151,7 @@ nav ul li a:hover {
 	color: var(--color-header-link-hover);
 }
 
-.current-page-link {
+#current-page-link {
 	background-color: var(--color-bg-current-page-link);
 }
 
@@ -269,6 +271,103 @@ footer {
 
 .card > p {
 	font-size: 0.9rem;
+}
+
+/*********************************************************** CONTACT  PAGE***********************************************************/
+
+.contact-article {
+	text-align: left;
+}
+.contact-form-section fieldset {
+	text-align: left;
+	margin-bottom: 25px;
+	padding-bottom: 30px;
+	border-radius: 8px;
+	/* Quitar el borde predeterminado, que se ve raro con equinas curvadas */
+	border: 1px solid;
+}
+
+.contact-form-section {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.contact-form-section input,
+select,
+textarea {
+	padding: 10px;
+	border: 1px solid var(--color-green);
+	border-radius: 5px;
+	margin-top: 5px; /*Crear espacio entre los campos y las etiquetas */
+}
+
+.personal-data-fieldset {
+	display: flex;
+	flex-wrap: wrap; /* Los elementos con width:100% se colocan en una columna */
+	gap: 10px;
+}
+
+label[for="name"],
+label[for="email"] {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+label[for="country-code"] {
+	max-width: calc(
+		50% - 10px
+	); /*Substraer el margen para que los elementos no se desborden */
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+label[for="phone"] {
+	width: calc(50% - 10px);
+	flex-grow: 1; /* Para que ocupe todo el ancho del contenador si este elemento overflows en pantallas muy pequeñas*/
+	display: flex;
+	flex-direction: column; /*Para que la etiqeta y el input estén en una columna */
+}
+
+.message-information-fieldset textarea {
+	padding: 10px;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.contact-form-section label {
+	margin-top: 15px; /*Crear espacio entre los campos de entrada */
+}
+
+label[for="user-type"],
+label[for="subject"],
+label[for="message"] {
+	display: block;
+	clear: both; /* Clear the float so the label is not next to the input */
+}
+/*Quitar el margen del primer radio button para que esté alineado a la izquierda con el label */
+input[id="user"] {
+	margin-left: 0;
+}
+
+.required-asterisk {
+	color: var(--color-orange);
+}
+
+button[form="contact-form"] {
+	width: 100%;
+	padding: 15px 30px;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--color-bg-contact-form-button);
+	color: var(--color-contact-form-button-text);
+	cursor: pointer;
+}
+
+.contact-form-section ::placeholder {
+	font-style: italic;
 }
 
 /***************** Footer ***********************/
