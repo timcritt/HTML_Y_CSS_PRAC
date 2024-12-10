@@ -55,6 +55,7 @@
 
 	/*Colores de otros elementos*/
 	--color-footer-hr: var(--color-light-gray);
+	--shadow-card: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Base styles */
@@ -188,10 +189,8 @@ nav ul li a:hover {
 	padding-top: 5px; /* Se aplica a <p> porque el contenador tiene posicionamiento absoluto, y el padding lateral no tiene efecto */
 }
 
-/* Section - global styles */
-section,
-footer {
-	padding: 5px 10px 30px 10px;
+section {
+	margin: 0 15px 0px 15px;
 }
 
 /*****************  Welcome to a Sustainable Future*********************/
@@ -259,24 +258,36 @@ footer {
 .card {
 	background-color: var(--color-bg-card);
 	color: var(--color-text-secondary);
-	padding: 15px;
-	margin: 10px;
+	padding: 10px;
+	margin: 5px;
 	border-radius: 10px;
+	box-shadow: var(--shadow-card);
 }
-
 .card img {
-	width: 25%;
-	height: auto;
+	height: 125px; /*Investigate: Why does setting image height as a % of container make the container way bigger!?*/
 }
 
 .card > p {
 	font-size: 0.9rem;
+	margin: 5px;
+}
+.card > h3 {
+	margin: 5px;
 }
 
 /*********************************************************** CONTACT  PAGE***********************************************************/
+
+.contact-main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 /***************** Contact Form***********************/
 .contact-article {
 	text-align: left;
+	display: flex;
+	flex-direction: column;
 }
 
 .contact-article .hero {
@@ -288,6 +299,14 @@ footer {
 .contact-article .hero h1 {
 	font-family: "Montserrat", sans-serif;
 	font-weight: 500;
+}
+
+.contact-article .hero p {
+	margin: auto;
+	max-width: 90%;
+}
+.contact-article a {
+	color: var(--color-orange);
 }
 
 .contact-form-section fieldset {
@@ -370,6 +389,7 @@ input[id="user"] {
 button[form="contact-form"] {
 	width: 100%;
 	padding: 15px 30px;
+	margin: 10px 0;
 	border: none;
 	border-radius: 5px;
 	background-color: var(--color-bg-contact-form-button);
@@ -381,19 +401,30 @@ button[form="contact-form"] {
 	font-style: italic;
 }
 /***************** Contact Information ***********************/
+.contact-information-section {
+	text-align: center;
+	background-color: var(--color-light-beige);
+	padding: 40px 20px;
+}
+
+.contact-information-section p {
+	margin: 5px;
+}
+.contact-information-section h2 {
+	margin: 2px;
+}
+
+address {
+	font-style: normal; /*sobrescirbir el estilo predeterminado de la dirección */
+}
 
 /***************** Footer ***********************/
 address {
 	display: inline-block; /* Para que el contenido de la dirección esté en la misma línea que la etiqueta */
 }
 
-.contact-information-section {
-	text-align: center;
-	background-color: var(--color-light-beige);
-	margin: 50px 10px;
-}
-
 footer {
+	margin-top: 30px;
 	background-color: var(--color-bg-footer);
 	color: var(--color-footer-text);
 }
@@ -461,4 +492,123 @@ footer hr {
 	background-color: var(--color-footer-hr);
 	color: var(--color-footer-hr);
 	border: none;
+}
+
+/*************************************	Responsive Design	******************************/
+/* mobile first media query 768 pixels */
+@media (min-width: 768px) {
+	h1 {
+		font-size: 4rem;
+	}
+
+	.hero {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.hero img {
+		width: 35%;
+	}
+	.hero .title-container {
+		max-width: 768px;
+		top: 155px;
+	}
+
+	.key-initiatives-section {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+	footer {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(
+			4,
+			auto
+		); /* 4 filas de altura automática según el contenido*/
+		grid-gap: 10px;
+		align-items: flex-start;
+	}
+	footer hr {
+		grid-column: 1 / -1;
+	}
+	footer .social-icons-menu {
+		grid-column: 1 / -1;
+	}
+	footer .copyright-message {
+		grid-column: span 4;
+		width: 100%;
+	}
+	footer li {
+		justify-content: left;
+		text-align: left;
+	}
+	footer .contact-details-nav {
+		align-items: center;
+	}
+	footer .contact-details-nav li {
+		justify-content: center;
+	}
+
+	footer nav {
+		align-items: flex-start;
+	}
+
+	.contact-article {
+		display: grid;
+		grid-template-areas:
+			"hero      hero"
+			"top-left  right"
+			"bottom-left right";
+	}
+	.hero {
+		grid-area: hero;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.call-to-action-section {
+		grid-area: top-left;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+	.call-to-action-section p {
+		margin: 10px 0 20px 0;
+	}
+
+	.contact-information-section {
+		grid-area: bottom-left;
+		height: fit-content;
+	}
+	.contact-form-section {
+		grid-area: right;
+	}
+}
+
+/* 1200 pixels */
+@media (min-width: 1200px) {
+	.key-initiatives-section h2 {
+		display: flex;
+		justify-content: center;
+		grid-column: span 3;
+	}
+
+	.contact-article .hero p {
+		margin: auto;
+		max-width: 35%;
+	}
+}
+
+/* 1440 pixels */
+@media (min-width: 1440px) {
+	/* 1600 pixels */
+}
+
+/* 1600 pixels */
+@media (min-width: 1600px) {
+	/* 1920 pixels */
+}
+/* 2560 pixels */
+@media (min-width: 2560px) {
+	/* 3840 pixels */
 }
