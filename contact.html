@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="description"
+			content="Practical of the subject html and css of the UOC"
+		/>
+		<title>Pec 3 Practical</title>
+
+		<link rel="stylesheet" href="./css/styles.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+		/>
+		<link rel="icon" href="./images/favicon.png" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li><a href="/index.html">Home</a></li>
+					<li><a href="#">Highlights</a></li>
+					<li id="current-page-link"><a href="/contact.html">Contact Us</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main class="contact-main">
+			<article class="contact-article">
+				<section class="hero">
+					<h1>Get in Touch</h1>
+					<p>
+						Join us in building a greener future. Let's make a difference
+						together.
+					</p>
+				</section>
+				<section class="call-to-action-section">
+					<h2>Want to collaborate on sustainability?</h2>
+					<p>
+						Fill out the form, and let's work together towards a sustainable
+						future. Our team will reach out to discuss how we can support your
+						green goals.
+					</p>
+				</section>
+				<section class="contact-form-section">
+					<h2>Contact Form</h2>
+					<form action="#" method="post" id="contact-form">
+						<fieldset class="personal-data-fieldset">
+							<legend>Personal Data</legend>
+							<label for="name"
+								>Name<span class="required-asterisk">*</span
+								><input
+									type="text"
+									id="name"
+									name="name"
+									required
+									placeholder="Enter your full name"
+							/></label>
+
+							<label for="email"
+								>Email<span class="required-asterisk">*</span
+								><input
+									type="email"
+									id="email"
+									name="email"
+									required
+									placeholder="e.g., user@example.com"
+							/></label>
+
+							<label for="country-code"
+								>Country Code<span class="required-asterisk">*</span
+								><select id="country-code" name="country-code" required>
+									<option value="" selected disabled hidden>
+										Choose country
+									</option>
+									<optgroup label="Europe">
+										<option value="FR">France (+33)</option>
+										<option value="UK">UK (+44)</option>
+										<option value="DE">Germany (+49)</option>
+										<option value="ES">Spain (+34)</option>
+									</optgroup>
+									<optgroup label="America">
+										<option value="USA">USA (+01)</option>
+										<option value="MX">Mexico (+52)</option>
+									</optgroup>
+								</select></label
+							>
+
+							<label for="phone"
+								>Phone<span class="required-asterisk">*</span
+								><input
+									type="tel"
+									id="phone"
+									name="phone"
+									required
+									placeholder="e.g., +1 555 123 4567"
+							/></label>
+						</fieldset>
+						<fieldset class="message-information-fieldset">
+							<legend>Message Information</legend>
+							<label for="user-type"
+								>User Type<span class="required-asterisk">*</span></label
+							>
+							<!-- <div id="user-type" required> -->
+
+							<label for="user"
+								><input
+									type="radio"
+									id="user"
+									name="userType"
+									value="User"
+									required
+								/>User</label
+							>
+
+							<label for="company"
+								><input
+									type="radio"
+									id="company"
+									name="userType"
+									value="Company"
+									required
+								/>Company</label
+							>
+
+							<label for="ngo"
+								><input
+									type="radio"
+									id="ngo"
+									name="userType"
+									value="NGO"
+									required
+								/>NGO</label
+							>
+							<!-- </div> -->
+
+							<label for="subject">Subject</label>
+
+							<input
+								type="text"
+								id="subject"
+								name="subject"
+								placeholder="Brief subject (optional)"
+							/>
+
+							<label for="message"
+								>Message<span class="required-asterisk">*</span></label
+							>
+							<textarea
+								name="message"
+								rows="5"
+								cols="30"
+								placeholder="Write your message here"
+							></textarea>
+						</fieldset>
+						<input
+							type="checkbox"
+							id="privacy-policy"
+							name="privacy-policy"
+							required
+						/>
+						<label for="privacy-policy">
+							I accept the
+							<a href="privacy-policy.html" target="_blank">privacy policy</a>
+						</label>
+						<button type="submit" form="contact-form">Send Message</button>
+					</form>
+				</section>
+				<section class="contact-information-section">
+					<h2>Contact Information</h2>
+					<p>
+						Email:
+						<a href="mailto:info@sustainablefuture.org">
+							info@sustainablefuture.org
+						</a>
+					</p>
+					<p>Phone: <a href="tel:+11234567890"> 123-456-7890 </a></p>
+
+					Address:
+					<address>123 Green Avenue, Earth</address>
+				</section>
+			</article>
+		</main>
+		<footer>
+			<h2>Sustainable Future</h2>
+
+			<nav class="menu">
+				<h3>Menu</h3>
+				<menu>
+					<li><a class="footer-link" href="#">Home</a></li>
+					<li><a class="footer-link" href="#">Highlights</a></li>
+					<li><a class="footer-link" href="#">Contact Us</a></li>
+				</menu>
+			</nav>
+			<nav class="quick-links">
+				<h3>Quick Links</h3>
+				<menu>
+					<li><a class="footer-link" href="#">Privacy Policy</a></li>
+					<li><a class="footer-link" href="#">Terms of Service</a></li>
+					<li><a class="footer-link" href="#">Help Center</a></li>
+					<li>
+						<a class="footer-link" href="#"
+							><dfn><abbr title="Frequency Asked Questions">FAQs</abbr></dfn></a
+						>
+					</li>
+				</menu>
+			</nav>
+			<nav class="contact-details-nav">
+				<h3>Contact</h3>
+				<menu>
+					<li>
+						<a class="footer-link" href="tel:+11234567890">
+							<span class="fas fa-phone-alt contact-icon"></span> +1 (123)
+							456-7890
+						</a>
+					</li>
+					<li>
+						<a class="footer-link" href="mailto:info@sustainablefuture.org">
+							<span class="fas fa-envelope contact-icon"></span>
+							info@sustainablefuture.org
+						</a>
+					</li>
+					<li>
+						<span class="fas fa-clock contact-icon"></span>
+
+						<time> Monday - Saturday <br />9:00 AM - 5:00 PM</time>
+					</li>
+				</menu>
+			</nav>
+			<hr />
+			<menu class="social-icons-menu">
+				<li>
+					<a
+						href="https://facebook.com"
+						target="_blank"
+						class="fab fa-facebook-f footer-link"
+						aria-label="Facebook"
+					></a>
+				</li>
+				<li>
+					<a
+						href="https://twitter.com"
+						target="_blank"
+						class="fab fa-x-twitter footer-link"
+						aria-label="Twitter"
+					></a>
+				</li>
+				<li>
+					<a
+						href="https://instagram.com"
+						target="_blank"
+						class="fab fa-instagram footer-link"
+						aria-label="Instagram"
+					></a>
+				</li>
+				<li>
+					<a
+						href="https://linkedin.com"
+						target="_blank"
+						class="fab fa-linkedin-in footer-link"
+						aria-label="LinkedIn"
+					></a>
+				</li>
+			</menu>
+			<p class="copyright-message">
+				© 2024 Sustaible Future. All images come from freepik with a CC0
+				license.
+			</p>
+		</footer>
+	</body>
+</html>

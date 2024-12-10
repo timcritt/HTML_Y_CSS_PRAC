@@ -37,6 +37,7 @@
 	--color-bg-footer: var(--color-darker-green);
 	--color-bg-contact-button: var(--color-orange);
 	--color-bg-current-page-link: var(--color-slightly-lighter-green);
+	--color-bg-contact-form-button: var(--color-green);
 
 	/*Colores de texto*/
 	--color-text-primary: var(--color-dark-green);
@@ -50,9 +51,11 @@
 	--color-footer-h3: var(--color-orange);
 	--color-footer-text: var(--color-light-gray);
 	--color-footer-links-hover: var(--color-white);
+	--color-contact-form-button-text: var(--color-white);
 
 	/*Colores de otros elementos*/
 	--color-footer-hr: var(--color-light-gray);
+	--shadow-card: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Base styles */
@@ -61,13 +64,13 @@ html {
 	color: var(--color-text-primary);
 	font-size: 18px;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 /* Quitar el margen y el relleno predeterminado */
 body {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
 }
 
 main {
@@ -149,7 +152,7 @@ nav ul li a:hover {
 	color: var(--color-header-link-hover);
 }
 
-.current-page-link {
+#current-page-link {
 	background-color: var(--color-bg-current-page-link);
 }
 
@@ -186,10 +189,8 @@ nav ul li a:hover {
 	padding-top: 5px; /* Se aplica a <p> porque el contenador tiene posicionamiento absoluto, y el padding lateral no tiene efecto */
 }
 
-/* Section - global styles */
-section,
-footer {
-	padding: 5px 10px 30px 10px;
+section {
+	margin: 0 15px 0px 15px;
 }
 
 /*****************  Welcome to a Sustainable Future*********************/
@@ -257,23 +258,173 @@ footer {
 .card {
 	background-color: var(--color-bg-card);
 	color: var(--color-text-secondary);
-	padding: 15px;
-	margin: 10px;
+	padding: 10px;
+	margin: 5px;
 	border-radius: 10px;
+	box-shadow: var(--shadow-card);
 }
-
 .card img {
-	width: 25%;
-	height: auto;
+	height: 125px; /*Investigate: Why does setting image height as a % of container make the container way bigger!?*/
 }
 
 .card > p {
 	font-size: 0.9rem;
+	margin: 5px;
+}
+.card > h3 {
+	margin: 5px;
+}
+
+/*********************************************************** CONTACT  PAGE***********************************************************/
+
+.contact-main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/***************** Contact Form***********************/
+.contact-article {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+}
+
+.contact-article .hero {
+	margin: 0;
+	background-color: var(--color-light-green);
+	text-align: center;
+}
+
+.contact-article .hero h1 {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+}
+
+.contact-article .hero p {
+	margin: auto;
+	max-width: 90%;
+}
+.contact-article a {
+	color: var(--color-orange);
+}
+
+.contact-form-section fieldset {
+	text-align: left;
+	margin-bottom: 25px;
+	padding-bottom: 30px;
+	border-radius: 8px;
+	/* Quitar el borde predeterminado, que se ve raro con equinas curvadas */
+	border: 1px solid;
+}
+
+.contact-form-section {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.contact-form-section input,
+select,
+textarea {
+	padding: 10px;
+	border: 1px solid var(--color-green);
+	border-radius: 5px;
+	margin-top: 5px; /*Crear espacio entre los campos y las etiquetas */
+}
+
+.personal-data-fieldset {
+	display: flex;
+	flex-wrap: wrap; /* Los elementos con width:100% se colocan en una columna */
+	gap: 10px;
+}
+
+label[for="name"],
+label[for="email"] {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+label[for="country-code"] {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+label[for="phone"] {
+	width: calc(50% - 10px);
+	flex-grow: 1; /* Para que ocupe todo el ancho del contenador si este elemento overflows en pantallas muy pequeñas*/
+	display: flex;
+	flex-direction: column; /*Para que la etiqeta y el input estén en una columna */
+}
+
+.message-information-fieldset textarea,
+input[type="text"] {
+	padding: 10px;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.contact-form-section label {
+	margin-top: 15px; /*Crear espacio entre los campos de entrada */
+}
+
+label[for="user-type"],
+label[for="subject"],
+label[for="message"] {
+	display: block;
+	clear: both; /* Clear the float so the label is not next to the input */
+}
+/*Quitar el margen del primer radio button para que esté alineado a la izquierda con el label */
+input[id="user"] {
+	margin-left: 0;
+}
+
+.required-asterisk {
+	color: var(--color-orange);
+	display: contents; /* Para que el asterisco se muestre en la misma línea que el texto a pesar de flex-direction: column*/
+}
+
+button[form="contact-form"] {
+	width: 100%;
+	padding: 15px 30px;
+	margin: 10px 0;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--color-bg-contact-form-button);
+	color: var(--color-contact-form-button-text);
+	cursor: pointer;
+}
+
+.contact-form-section ::placeholder {
+	font-style: italic;
+}
+/***************** Contact Information ***********************/
+.contact-information-section {
+	text-align: center;
+	background-color: var(--color-light-beige);
+	padding: 40px 20px;
+}
+
+.contact-information-section p {
+	margin: 5px;
+}
+.contact-information-section h2 {
+	margin: 2px;
+}
+
+address {
+	font-style: normal; /*sobrescirbir el estilo predeterminado de la dirección */
 }
 
 /***************** Footer ***********************/
+address {
+	display: inline-block; /* Para que el contenido de la dirección esté en la misma línea que la etiqueta */
+}
 
 footer {
+	margin-top: 30px;
 	background-color: var(--color-bg-footer);
 	color: var(--color-footer-text);
 }
@@ -341,4 +492,123 @@ footer hr {
 	background-color: var(--color-footer-hr);
 	color: var(--color-footer-hr);
 	border: none;
+}
+
+/*************************************	Responsive Design	******************************/
+/* mobile first media query 768 pixels */
+@media (min-width: 768px) {
+	h1 {
+		font-size: 4rem;
+	}
+
+	.hero {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.hero img {
+		width: 35%;
+	}
+	.hero .title-container {
+		max-width: 768px;
+		top: 155px;
+	}
+
+	.key-initiatives-section {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+	footer {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(
+			4,
+			auto
+		); /* 4 filas de altura automática según el contenido*/
+		grid-gap: 10px;
+		align-items: flex-start;
+	}
+	footer hr {
+		grid-column: 1 / -1;
+	}
+	footer .social-icons-menu {
+		grid-column: 1 / -1;
+	}
+	footer .copyright-message {
+		grid-column: span 4;
+		width: 100%;
+	}
+	footer li {
+		justify-content: left;
+		text-align: left;
+	}
+	footer .contact-details-nav {
+		align-items: center;
+	}
+	footer .contact-details-nav li {
+		justify-content: center;
+	}
+
+	footer nav {
+		align-items: flex-start;
+	}
+
+	.contact-article {
+		display: grid;
+		grid-template-areas:
+			"hero      hero"
+			"top-left  right"
+			"bottom-left right";
+	}
+	.hero {
+		grid-area: hero;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.call-to-action-section {
+		grid-area: top-left;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+	.call-to-action-section p {
+		margin: 10px 0 20px 0;
+	}
+
+	.contact-information-section {
+		grid-area: bottom-left;
+		height: fit-content;
+	}
+	.contact-form-section {
+		grid-area: right;
+	}
+}
+
+/* 1200 pixels */
+@media (min-width: 1200px) {
+	.key-initiatives-section h2 {
+		display: flex;
+		justify-content: center;
+		grid-column: span 3;
+	}
+
+	.contact-article .hero p {
+		margin: auto;
+		max-width: 35%;
+	}
+}
+
+/* 1440 pixels */
+@media (min-width: 1440px) {
+	/* 1600 pixels */
+}
+
+/* 1600 pixels */
+@media (min-width: 1600px) {
+	/* 1920 pixels */
+}
+/* 2560 pixels */
+@media (min-width: 2560px) {
+	/* 3840 pixels */
 }
