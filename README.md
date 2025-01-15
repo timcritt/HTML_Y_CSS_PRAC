@@ -1,2 +1,2 @@
-This was the final practica project of the Html and CSS course at la Universitat Oberta de Catalunya.
-We had to create the site based on the written specifications and screen captures provided.
+This was the final practical project of the HTML and CSS course at la Universitat Oberta de Catalunya.
+The site was based on the written specifications and screen captures provided.
