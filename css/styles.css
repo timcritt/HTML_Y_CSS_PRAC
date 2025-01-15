@@ -22,23 +22,29 @@
 	--color-dark-green: #354f3a;
 	--color-darker-green: #27302e;
 	--color-light-green: #a8d5ba;
-
-	--color-translucent-green: rgba(78, 106, 82, 0.7);
-	--color-light-beige: #f5efe3;
-	--color-orange: #e07b4e;
-	--color-light-gray: #9c9c9c;
+	--color-lighter-green: #f1f5f1;
+	--color-light-beige: #fdf7ed; /*cambiado para cumplir con el contraste*/
 	--color-white: #ffffff;
+	--color-dark-orange: #c53e28;
+	--color-orange: #e07b4e; /*cambiado para cumplir con el contraste*/
+	--color-light-gray: #9c9c9c;
+	--color-lighter-gray: #cccccc;
+	--color-whatsapp-green: #25d366;
 
 	/***************variables con nombres funcionales*****************************/
 	/*Colores de fondo*/
 	--color-bg-header: var(--color-dark-green);
-	--color-bg-hero-title-container: var(--color-translucent-green);
+	--color-bg-hero-title-container: var(--color-green);
 	--color-bg-card: var(--color-green);
 	--color-bg-footer: var(--color-darker-green);
-	--color-bg-contact-button: var(--color-orange);
+	--color-bg-contact-button: var(--color-dark-orange);
 	--color-bg-current-page-link: var(--color-green);
 	--color-bg-nav-button-link: var(--color-green);
 	--color-bg-contact-form-button: var(--color-green);
+	--color-bg-table-row-even: var(--color-light-green);
+	--color-bg-table-head: var(--color-dark-green);
+	--color-bg-table-subhead: var(--color-green);
+	--color-table-border: var(--color-lighter-gray);
 
 	/*Colores de texto*/
 	--color-text-primary: var(--color-dark-green);
@@ -53,23 +59,25 @@
 	--color-footer-text: var(--color-light-gray);
 	--color-footer-links-hover: var(--color-white);
 	--color-contact-form-button-text: var(--color-white);
+	--color-form-fields: var(--color-lighter-gray);
 
 	/*Colores de otros elementos*/
 	--color-footer-hr: var(--color-light-gray);
 	--shadow-card: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Base styles */
 *,
 *:before,
 *:after {
 	box-sizing: border-box; /*Box-sizing universal para que el padding y el borde no afecten al ancho y alto del elemento */
 }
 
-/* Base styles */
+/* A todos los elementos de la página se les aplica la fuente Montserrat y el color de texto principal */
 html {
 	font-family: "Montserrat", sans-serif;
 	color: var(--color-text-primary);
-	font-size: 18px;
+	font-size: 12px;
 	text-align: center;
 }
 
@@ -80,39 +88,27 @@ body {
 }
 
 main {
-	margin: 0 auto;
-	max-width: 1440px;
-}
-
-p {
-	line-height: 1.5;
+	margin: 0 auto; /*Centra el contenido principal*/
+	max-width: 1440px; /*Ancho máximo del contenido principal*/
 }
 
 h1,
 h2 {
-	font-family: "Berkshire Swash", cursive;
+	font-family: "Berkshire Swash", cursive; /*Fuente de los títulos h1 y h2*/
 }
-
 h1 {
 	font-size: 3rem;
 	margin: 10px;
 }
+
 h2 {
 	font-size: 2.5rem;
 	color: var(--color-green);
 	margin-bottom: 10px;
 }
+
 h3 {
 	font-size: 1.5rem;
-}
-
-button {
-	font-size: 1rem;
-	transition: filter 0.3s;
-}
-
-button:hover {
-	filter: brightness(1.2);
 }
 
 /* Sobrescribir los estilos predeterminados de <abbr> */
@@ -122,20 +118,67 @@ abbr {
 	border: none;
 }
 
-/*************** Header ***************/
-header {
-	background-color: var(--color-bg-header);
+section p {
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+/*********************UNIVERSAL CUSTOM CLASSES ********************/
+
+.call-to-action-button-from-link {
+	display: block; /*Para que los margenes no se colapsen */
+	width: fit-content; /*Para que el botón no sea todo el ancho del contenedor */
+	padding: 15px 30px;
+	margin: 10px auto;
+	text-decoration: none; /*Quitar el subrayado predeterminado del enlace */
+	font-size: 1rem;
+	transition: color 0.3s ease, background-color 0.3s ease;
+	border-radius: 25px;
+	background-color: var(--color-bg-contact-button);
+	color: var(--color-text-secondary);
+	cursor: pointer;
 }
 
-nav {
+.call-to-action-button-from-link:hover {
+	background-color: var(--color-text-secondary);
+	color: var(--color-bg-contact-button);
+}
+
+.full-width-hero {
+	margin: 0;
+	background-color: var(--color-light-green);
+	text-align: center;
+	padding: 120px 0 50px 0;
+}
+
+.full-width-hero h1 {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	margin-top: 0;
+}
+
+.full-width-hero p {
+	margin: 0 auto;
+	padding: 0 20px;
+	max-width: 450px; /*Restringir el ancho del texto debajo del título */
+}
+
+/*************** Header ***************/
+
+header nav {
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	background-color: var(--color-bg-header);
+	position: fixed;
+	box-shadow: var(--shadow-card);
+	z-index: 1; /*Para que el menú de navegación esté por encima de elementos con position relative */
 }
 
-nav a {
+header nav a {
 	color: var(--color-text-header);
 	text-decoration: none;
+	display: block;
+	padding: 10px 18px;
 }
 
 nav ul {
@@ -143,12 +186,11 @@ nav ul {
 	justify-content: space-around;
 	list-style: none;
 	padding: 0px;
-	margin: 0px;
+	margin: 3px;
 }
 
 nav ul li {
-	padding: 8px 15px;
-	margin: 15px 10px;
+	margin: 10px 5px;
 	border-radius: 5px;
 }
 
@@ -164,24 +206,51 @@ nav ul li:hover {
 .animated-underline {
 	display: inline-block;
 	background-image: linear-gradient(
-		var(--color-header-link-hover-underline) 0 0
-			/*Establece el color de la línea de subrayado*/
-	);
-	background-position: 0 100%; /*Establece la posición de la imagen de fondo en la parte inferior y a la izquierda del elemento*/
-	background-size: 0% 2px; /*Ancho de la línea de subrayado*/
-	background-repeat: no-repeat; /*No se repite la imagen de fondo*/
-	transition: background-size 0.3s, background-position 0s 0.3s; /*Transición de la animación*/
+		to right,
+		var(--color-header-link-hover-underline),
+		var(--color-header-link-hover-underline)
+	); /* Establece el color de la línea de subrayado como un degradado sólido */
+	background-position: 0 100%; /* Posiciona la imagen de fondo en la parte inferior izquierda del elemento */
+	background-size: 0% 2px; /* Hace que la línea de subrayado inicialmente tenga un ancho de 0% y un grosor de 2px */
+	background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+	transition: background-size 0.3s ease, background-position 0s 0.3s ease,
+		background-color 0.3s ease; /* Añade transiciones suaves para la animación */
 }
-
 .animated-underline:hover {
-	background-position: 100% 100%; /*OR bottom right*/
-	background-size: 100% 2px;
+	background-position: 100% 100%; /*Mueve la línea de subrayado a la parte inferior y derecha del elemento*/
+	background-size: 100% 2px; /*Ancho de la línea de subrayado*/
 }
 
-/**************** Hero ***********************/
+/***************** Skip link (salto de navegación */
+/* el enlace empieza escondido */
+.skip {
+	position: absolute;
+	left: -10000px; /* Mueve el enlace fuera de la pantalla */
+	top: auto; /* Mueve el enlace fuera de la pantalla */
+	width: 1px; /* Establece el ancho en 1px para que no se muestre en la pantalla pero sea accesible para los lectores de pantalla */
+	height: 1px; /* Establece la altura en 1px para que no se muestre en la pantalla pero sea accesible para los lectores de pantalla */
+	overflow: hidden; /* Oculta el contenido que se desborda */
+}
+
+li:has(.skip) {
+	padding: 0px;
+	position: absolute;
+	background-color: red;
+}
+
+/* Cuando el usuario da a tab, el enlace es visible en la pantalla y a un lector de pantalla */
+.skip:focus {
+	/* Selecciona el enlace cuando está enfocado */
+	position: static; /* Establece la posición en estática */
+	width: auto; /* Establece el ancho en automático  */
+	height: auto; /* Establece la altura en automático */
+}
+/************************************************************************INDEX PAGE************************************************************************/
+
+/********************************* Hero ***************************/
 .hero {
 	position: relative;
-	margin: 0 20px;
+	padding-top: 70px;
 }
 
 .hero img {
@@ -190,17 +259,16 @@ nav ul li:hover {
 }
 /* Position: absolute causa que al padding lateral no tenga el efecto esperado sobre el contenido */
 .hero .title-container {
-	width: 100%;
+	width: calc(100% - 20px); /* simular margen lateral */
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: var(--color-translucent-green);
+	background-color: var(--color-green);
 	color: var(--color-h1);
 	border-radius: 8px;
 	box-sizing: border-box;
 }
-
 .title-container h1,
 .title-container p {
 	padding: 0px 18px;
@@ -211,25 +279,31 @@ nav ul li:hover {
 	padding-top: 5px; /* Se aplica a <p> porque el contenador tiene posicionamiento absoluto, y el padding lateral no tiene efecto */
 }
 
-/* section {
-	margin: 0 15px 0px 15px;
-} */
-
-/*****************  Welcome to a Sustainable Future*********************/
+/**********************  Welcome to a Sustainable Future section************/
 .welcome-section {
 	background: linear-gradient(
 		180deg,
 		var(--color-light-beige),
 		var(--color-white)
 	);
+	padding: 5px 10px 70px 10px;
 }
-/****************** Key initiatives **********************/
+
+.welcome-section h2 {
+	margin: 5px;
+}
+
+/*********************** Key initiatives section ****************************/
 
 .key-initiatives-section h2 {
 	display: none;
 }
 
-/****************** Take Action for a Green Plant**********************/
+.key-initiatives-section .card {
+	margin: 15px;
+}
+
+/**************** Take Action for a Green Plant*****************************/
 .take-action-section {
 	background: linear-gradient(
 		160deg,
@@ -264,16 +338,7 @@ nav ul li:hover {
 }
 
 .take-action-section p {
-	padding: 0 21px;
-}
-
-.take-action-section button {
-	background-color: var(--color-bg-contact-button);
-	color: var(--color-text-secondary);
-	padding: 15px 30px;
-	border: none;
-	border-radius: 25px;
-	cursor: pointer;
+	padding: 0 45px;
 }
 
 /***************** Card ***********************/
@@ -296,16 +361,15 @@ nav ul li:hover {
 .card > h3 {
 	margin: 5px;
 }
-
-/*********************************************************** CONTACT  PAGE***********************************************************/
+/*********************************************************** CONTACT  PAGE ***********************************************************/
 
 .contact-main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: 20px;
 }
 
-/***************** Contact Form***********************/
 .contact-article {
 	text-align: left;
 	display: flex;
@@ -327,33 +391,68 @@ nav ul li:hover {
 	margin: auto;
 	max-width: 90%;
 }
-.contact-article a {
-	color: var(--color-orange);
-}
 
+/*************************** Contact Form Section *****************************/
+
+/*Para crear espacio entre la section y el border de la pantalla */
+.contact-form-section {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
 .contact-form-section fieldset {
 	text-align: left;
 	margin-bottom: 25px;
 	padding-bottom: 30px;
 	border-radius: 8px;
 	/* Quitar el borde predeterminado, que se ve raro con equinas curvadas */
-	border: 1px solid;
+	border: 1px solid var(--color-form-fields);
 }
 
-.contact-form-section {
-	margin-top: 10px;
-	margin-bottom: 5px;
+/*Estilos para todos los placeholders del formulario de contacto */
+.contact-form-section ::placeholder {
+	font-style: italic;
+	color: var(--color-form-fields); /*Cambiar el color del texto de placeholder*/
 }
 
+.contact-form-section #user-type {
+	display: contents; /* Para que el borde del fieldset no se vea, y se pueda apliar un leyenda al grupo de radio buttons de manera semantica */
+}
+
+/*Para que el legend esté alineado con los radio buttons */
+.contact-form-section #user-type legend {
+	margin-top: 15px;
+	padding-left: 0;
+}
+
+/*Estilos para todos los campos de entrada, select y textarea */
 .contact-form-section input,
 select,
 textarea {
 	padding: 10px;
-	border: 1px solid var(--color-green);
+	border: 1px solid var(--color-form-fields);
 	border-radius: 5px;
 	margin-top: 5px; /*Crear espacio entre los campos y las etiquetas */
+	transition: all 0.3s ease;
 }
 
+/*Estilos para los radio buttons y checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+	accent-color: var(
+		--color-green
+	); /*Cambiar el color del radio button y checkbox*/
+	cursor: pointer;
+}
+
+/*Seleciona los textareas y todos los inputs aparte de los radio buttons*/
+.contact-form-section input:not([type="radio"]):focus,
+textarea:focus {
+	border-color: var(--color-green); /* Cambia el borde a color verde */
+	box-shadow: 0 0 3px var(--color-green); /* Sombra verde alrededor */
+	outline: none; /* Elimina el contorno predeterminado del navegador */
+}
+
+/*Para la section de los campos de datos personales */
 .personal-data-fieldset {
 	display: flex;
 	flex-wrap: wrap; /* Los elementos con width:100% se colocan en una columna */
@@ -367,6 +466,7 @@ label[for="email"] {
 	flex-direction: column;
 }
 
+/*El label envuelve el input, entonces se aplica las propidedas flex para que el input se coloque debajo del label */
 label[for="country-code"] {
 	flex-grow: 1;
 	display: flex;
@@ -374,6 +474,7 @@ label[for="country-code"] {
 	flex-wrap: wrap;
 }
 
+/*El label envuelve el input, entonces se aplican flex-direction: column y flex-wrap: wrap para que el input se coloque debajo del label */
 label[for="phone"] {
 	width: calc(50% - 10px);
 	flex-grow: 1; /* Para que ocupe todo el ancho del contenador si este elemento overflows en pantallas muy pequeñas*/
@@ -387,6 +488,11 @@ input[type="text"] {
 	box-sizing: border-box;
 	width: 100%;
 }
+
+/*No se puede modificar los estilos del dropdown en si. Es especifico de cada navegador */
+/* .contact-form-section select {
+	
+} */
 
 .contact-form-section label {
 	margin-top: 15px; /*Crear espacio entre los campos de entrada */
@@ -403,11 +509,13 @@ input[id="user"] {
 	margin-left: 0;
 }
 
+/*Estilos para el asterisco al lado de los campos requeridos */
 .required-asterisk {
 	color: var(--color-orange);
 	display: contents; /* Para que el asterisco se muestre en la misma línea que el texto a pesar de flex-direction: column*/
 }
 
+/*Estilos para el botón de send message*/
 button[form="contact-form"] {
 	width: 100%;
 	padding: 15px 30px;
@@ -417,12 +525,16 @@ button[form="contact-form"] {
 	background-color: var(--color-bg-contact-form-button);
 	color: var(--color-contact-form-button-text);
 	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
-.contact-form-section ::placeholder {
-	font-style: italic;
+/*Efecto de hover para el botón de send message */
+button[form="contact-form"]:hover {
+	background-color: var(--color-dark-green);
+	cursor: pointer;
 }
-/***************** Contact Information ***********************/
+
+/***************** Contact Information Section***********************/
 .contact-information-section {
 	text-align: center;
 	background-color: var(--color-light-beige);
@@ -435,28 +547,242 @@ button[form="contact-form"] {
 .contact-information-section h2 {
 	margin: 2px;
 }
-
-address {
-	font-style: normal; /*sobrescirbir el estilo predeterminado de la dirección */
+.contact-information-section a {
+	color: var(--color-dark-orange);
 }
 
-/***************** Footer ***********************/
-address {
-	display: inline-block; /* Para que el contenido de la dirección esté en la misma línea que la etiqueta */
+/*********************************************************** HIGHLIGHTS  PAGE ***********************************************************/
+/*Establece el fondo con una imagen fijada */
+.highlights-article {
+	background: url("../images/landscape.png") fixed;
+	background-size: contain;
+	background-repeat: repeat;
+	background-position: center;
 }
+
+/*Asegurar que la imgagen de fondo fixed esté por defecto escondida detrás del contenido*/
+.highlights-article section,
+aside {
+	background-color: white;
+	margin: 0;
+	overflow: hidden;
+}
+
+/******************************* Highlights Nav ************************/
+.highlights-article aside {
+	margin-top: 10px;
+}
+
+.highlights-nav-container {
+	background-color: var(--color-light-beige);
+}
+.highlights-nav a {
+	display: block; /*Permite que se aplique padding y que la zona de clic sea más grande */
+	padding: 10px;
+	text-decoration: none;
+	color: inherit; /*inherit color from parent, allowing for color to be assigned to parent and therefore changed on hover of parent*/
+}
+
+.highlights-nav menu {
+	list-style: none; /*Quitar los puntos de la lista*/
+	padding: 0; /*Para quitar el padding predeterminado de la lista*/
+}
+
+.highlights-nav li {
+	color: var(--color-text-primary);
+	transition: all ease 0.3s; /*Efecto de transición al pasar el ratón por encima del enlace*/
+	cursor: pointer; /*Cambiar el cursor al pasar el ratón por encima del enlace*/
+	border-radius: 5px;
+	margin: 5px;
+}
+
+/*Selector más complejo necesario para seleccionar tanto el li como el enlace dentro del li*/
+.highlights-nav li:hover {
+	background-color: var(
+		--color-dark-green
+	); /*Cambiar el color de fondo al pasar el ratón por encima del enlace*/
+	color: var(
+		--color-light-beige
+	); /*Cambiar el color del texto al pasar el ratón por encima del enlace*/
+	box-shadow: var(--shadow-card);
+}
+
+/******************************* Key Statistics Section ************************/
+
+#key-statistics-section {
+	display: flex;
+	flex-direction: column; /*Para que los elementos hijos estén en una columna*/
+	align-items: center; /*Para que los elementos estén centrados horizontalmente*/
+}
+
+#key-statistics-section p {
+	padding-left: 30px; /*Para que parezca más a las capturas de pantalla*/
+	padding-right: 30px; /*Para que parezca más a las capturas de pantalla*/
+}
+
+/*************************** Table *************************/
+
+.highlights-article table {
+	border-collapse: collapse; /*Para que los bordes de las celdas no se superpongan. (En HTML5, hay que hacerlo con CSS)*/
+	border-spacing: 0; /*Para que no haya espacio entre las celdas*/
+	text-align: left; /*Para que el texto esté alineado a la izquierda en las celdas*/
+	margin: 20px;
+}
+
+table,
+th,
+td {
+	border: 1px solid var(--color-table-border); /*estilos de borde de la tabla*/
+}
+
+/*En HTML5, Hay que aplicar padding a los elementos de la tabla con CSS, no con atributos de HTML*/
+.highlights-article th,
+tr,
+td {
+	padding: 12px;
+}
+
+/*Estilos para la cabecera de la tabla*/
+.highlights-article thead .table-head {
+	background-color: var(--color-bg-table-head);
+	color: var(--color-light-beige);
+	text-align: center;
+}
+
+/*Estilos para la subcabecera de la tabla*/
+.highlights-article table thead .table-subhead {
+	background-color: var(--color-bg-table-subhead);
+	color: white;
+	text-align: center;
+}
+
+/*Estilos para las filas pares de la tabla*/
+.highlights-article table tbody tr:nth-child(even) {
+	background-color: var(--color-lighter-green);
+}
+
+/*selecionar el footer de la tabla para darle un color de fondo diferente*/
+.highlights-article table tfoot {
+	background-color: var(--color-light-green);
+	text-align: center;
+}
+
+/******************************* Featured Projects Section ************************/
+
+/*Para que se vea la imagen de fondo detrás del contenido*/
+.highlights-article #featured-projects-section {
+	background-color: transparent;
+	padding-bottom: 50px;
+}
+
+.featured-projects-cards-container {
+	display: flex; /*Para que los elementos se coloquen en una fila*/
+	flex-wrap: wrap; /*Para que los elementos se coloquen en una fila si caben, y en la siguiente si no*/
+	justify-content: center; /*Para que los elementos estén centrados horizontalmente*/
+}
+
+/*Estilos para las tarjetas de los proyectos destacados*/
+#featured-projects-section .card {
+	color: white;
+	max-width: 250px; /*Para que varias targetas no se coloquen en una fila si la anchura de la pantalla lo permite*/
+	min-width: 200px; /*Para que las tarjetas pasan a la siguiente fila si la anchura de la pantalla es muy pequeña*/
+	flex: 1 1 calc(50% - 5px); /*para que los cards crezcan y se ajusten al ancho del contenedor*/
+	padding: 20px 15px; /*Para que el texto no esté pegado a los bordes de la tarjeta*/
+	display: flex;
+	flex-direction: column; /*Para que los elementos hijos de las targetas estén en una columna*/
+	justify-content: center; /*Para que los elementos estén centrados verticalmente*/
+}
+
+#featured-projects-section h3 {
+	font-size: 1.2rem; /*para parecer más a las capturas de pantalla*/
+	font-weight: 500; /*para parecer más a las capturas de pantalla*/
+}
+
+/******************************* Sustainable Goals Section ****************************/
+
+/*Estilos para la infographía*/
+#sustainable-goals-section img {
+	width: 100%;
+	height: auto; /*Se mantienen las proporciones de la imagen*/
+	max-width: 608px; /*Asignar un ancho máximo aquí, en lugar de depender de breakpoints, evita cambios bruscos en el tamaño de la imagen */
+}
+
+/*Estilos para el contenedor de la infografía*/
+#sustainable-goals-section figure {
+	border: 1px solid var(--color-light-beige);
+	border-radius: 5px;
+	padding: 30px;
+	margin: 15px;
+}
+
+/*Estilos para la caption de la infografía*/
+#sustainable-goals-section figcaption {
+	font-size: 0.8rem;
+	color: var(--color-dark-green);
+}
+
+/*Sobreescritura de algunos estilos de las tarjetas de los proyectos destacados*/
+#sustainable-goals-section .card {
+	background-color: var(--color-light-beige);
+	color: var(--color-text-primary);
+	padding-bottom: 40px;
+}
+
+/*Para que el h3 se parezca más a las capturas de pantalla*/
+#sustainable-goals-section h3 {
+	font-size: 1.2rem;
+	font-weight: 500; /*menos "negrita"*/
+}
+
+.sustainable-goals-cards-container {
+	display: flex; /*Para que las tarjetas se coloquen en una fila*/
+	flex-wrap: wrap; /*Para que las tarjetas se coloquen en una fila si caben, y en la siguiente si no*/
+	justify-content: space-between; /*Para que los elementos son de la misma anchura cuando ocupan la misma fila */
+	gap: 10px; /*El espacio entre las tarjetas*/
+	padding: 10px;
+}
+
+.sustainable-goals-cards-container .card {
+	flex: 1 0 calc(50% - 30px); /*Para que las tarjetas crezcan y se ajusten al ancho del contenedor*/
+	min-width: 250px; /*Para que las tarjetas pasan a la siguiente fila (y ocupar todo su ancho) si la anchura de la pantalla es muy pequeña*/
+}
+
+/******************************* Partners and collaborators Section ************************/
+
+#partners-section {
+	padding: 20px;
+}
+
+/******************************* Join us Section ************************/
+#join-us-section {
+	background-color: var(--color-dark-green);
+	color: white;
+	padding: 20px 20px 40px 20px;
+}
+#join-us-section h2 {
+	color: white;
+}
+
+/************************************************************** FOOTER ********************************************************************/
 
 footer {
-	margin-top: 30px;
+	/* margin-top: 30px; */
 	background-color: var(--color-bg-footer);
 	color: var(--color-footer-text);
 }
 
-footer h2 {
-	color: var(--color-footer-h2);
-	padding: 0 10px;
+/* Para que el contenido del footer tenga un ancho máximo igual que el contenido principal, incluso en pantallas grandes */
+.footer-inner-container {
+	max-width: 1440px;
+	padding: 30px 30px 80px 30px;
 }
 
-/* Organizar los elementos de la listas de navegación del pie de página en una columna */
+footer h2 {
+	color: var(--color-footer-h2);
+	/* padding: 0 10px; */
+}
+
+/* Organizar los elementos de la listas de navegación del pie de página en una columna, y centrarlos horizontalmente y verticalmente */
 footer nav {
 	display: flex;
 	flex-direction: column;
@@ -477,7 +803,7 @@ footer menu {
 	padding: 0;
 }
 
-/* Elementos de los nav menus*/
+/*Para que los elementos de la lista de contactos se mantengan en una fila con los inconos sociales a la izquierda */
 footer li {
 	margin: 10px 0;
 	display: flex;
@@ -491,15 +817,23 @@ footer li {
 	text-decoration: none; /*Quitar el subrayado pretermindado de los iconos sociales */
 	transition: color 0.3s ease; /* Efecto de transición para los iconos sociales */
 	cursor: pointer;
+	display: flex; /* Para que los iconos estén en una fila con el texto */
 }
 .footer-link:hover {
-	color: var(--color-footer-links-hover); /* Hover effect for social icons */
+	color: var(
+		--color-footer-links-hover
+	); /* Cambiar el color de los iconos sociales al pasar el ratón por encima */
 }
 
 /* Posicionar los iconos de contacto  */
 footer .contact-icon {
 	margin-right: 20px;
 	margin-top: 3px;
+}
+
+/*Para que la primera linea de la info de contacto esté en la misma fila que el icono */
+.opening-hours p {
+	margin: 0;
 }
 
 /* Social media icons */
@@ -510,6 +844,7 @@ footer .social-icons-menu {
 	font-size: 1.5rem; /* Tamaño de los iconos sociales */
 }
 
+/* Estilos de la línea horizontal */
 footer hr {
 	margin: 10px 10px 10px 10px; /* Para ampliar la distancia entre la línea horizontal y los elementos de la lista de navegación */
 	height: 1px;
@@ -518,38 +853,63 @@ footer hr {
 	border: none;
 }
 
+/* Sobrescribir los estilos predeterminados de los enlaces de atribución de Freepik */
+footer .freepik-attribution {
+	color: var(--color-footer-text);
+}
+
+/* Whatsapp Chat siempre en la esquina inferior derecha */
 .whatsapp-icon {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	background-color: #25d366;
+	position: fixed; /* Para que el icono de Whatsapp esté fijo*/
+	bottom: 20px; /* Distancia desde el borde inferior de la ventana del navegador */
+	right: 20px; /* Distancia desde el borde derecho de la ventana del navegador */
+	background-color: var(--color-whatsapp-green);
 	color: white;
 	font-size: 24px;
-	line-height: 50px;
+	line-height: 50px; /* Para centrar el icono verticalmente */
 	width: 50px;
 	height: 50px;
-	border-radius: 50%;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	z-index: 1000;
-	text-decoration: none;
-	transition: transform 0.3s ease;
-	cursor: pointer;
+	border-radius: 50%; /* Para que el icono sea un círculo */
+	box-shadow: var(--shadow-card); /* Sombra del icono de Whatsapp */
+	z-index: 1000; /* Para que el icono de Whatsapp esté por encima de todos los otros elementos */
+	text-decoration: none; /* Quitar el subrayado predeterminado del icono de Whatsapp */
+	transition: transform 0.3s ease; /* Efecto de transición al pasar el ratón por encima del icono de Whatsapp */
+	cursor: pointer; /* Cambiar el cursor al pasar el ratón por encima del icono de Whatsapp */
 }
 
 /* Para cambiar el modo de display, hay que seleccionar el icono así para tener mayor especificidad que el estilo predetermindao de font-awesome */
 .whatsapp-icon.fa-brands {
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 1.7rem;
+	justify-content: center; /* Para centrar el icono de Whatsapp horizontalmente */
+	align-items: center; /* Para centrar el icono de Whatsapp verticalmente */
+	font-size: 1.7rem; /* Tamaño del icono de Whatsapp */
 }
 
+/*  Efecto de escala al pasar el ratón por encima del icono de Whatsapp */
 .whatsapp-icon:hover {
 	transform: scale(1.2);
 }
 
 /*************************************	Responsive Design	******************************/
-/* mobile first media query 768 pixels */
+
+@media (min-width: 360px) {
+	:root {
+		font-size: 14px;
+	}
+}
+
+@media (min-width: 390px) {
+	:root {
+		font-size: 16px;
+	}
+}
+
+@media (min-width: 480px) {
+	:root {
+		font-size: 18px;
+	}
+}
+
 @media (min-width: 768px) {
 	h1 {
 		font-size: 4rem;
@@ -561,87 +921,127 @@ footer hr {
 	}
 
 	.hero img {
-		width: 35%;
+		width: 35%; /*Para limitar el tamaño del héroe relativo a su contenedor en pantallas más grandes*/
 	}
 	.hero .title-container {
-		max-width: 768px;
-		top: 155px;
+		max-width: 768px; /*Para limitar el tamaño del contendedor del h1 relativo a su contenedor en pantallas más grandes*/
 	}
 
+	/*Convertir en un grid el contenedor de los cards de los key initiatives estén en una cuadrícula de 3 columnas*/
+	/*Se podria hacer con flex también, pero asi se podría modificar facilmente el comportamiento en el futuro*/
 	.key-initiatives-section {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(3, 1fr); /*3 columnas de igual ancho*/
+		gap: 15px; /*Espacio entre las columnas*/
+		margin: 15px; /*Margen a la izquierda y derecha del contenedor de los cards*/
 	}
+	.key-initiatives-section .card {
+		margin: 0; /*Necesario para que los márgenes no se duplican enter las targetas */
+	}
+
 	footer {
-		margin-top: 0;
+		margin-top: 0; /*Para que el footer esté pegado al final de la página*/
 	}
+	footer h2 {
+		grid-column: 1 / -1; /*El título del footer ocupa todas las columnas*/
+	}
+
 	.footer-inner-container {
-		max-width: 1440px;
-		margin: 0 auto;
-		padding: 30px;
+		margin: 0 auto; /*Centrar el contenido del footer*/
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr auto;
+		grid-template-columns: 1fr 1fr 1fr auto; /*3 columnas de igual ancho y una columna que ocupa el ancho restante*/
 		grid-template-rows: repeat(
 			4,
 			auto
 		); /* 4 filas de altura automática según el contenido*/
-		grid-gap: 20px;
-		align-items: flex-start;
+		grid-column-gap: 20px; /*Espacio entre las columnas*/
+		grid-row-gap: 10px; /*Espacio entre las filas*/
+		align-items: flex-start; /*Para que los menus estén alineados verticalmente en la parte superior del contenedor*/
 	}
 	footer hr {
-		grid-column: 1 / -1;
+		grid-column: 1 / -1; /* La línea horizontal ocupa todas las columnas */
 	}
 	footer .social-icons-menu {
-		grid-column: 1 / -1;
+		grid-column: 1 / -1; /* Los iconos sociales ocupan todas las columnas */
 	}
 	footer .copyright-message {
-		grid-column: span 4;
-		width: 100%;
+		grid-column: 1/-1; /* El mensaje de derechos de autor ocupa todas las columnas */
+		width: 100%; /* Para que el mensaje de derechos de autor ocupe todo el ancho del contenedor */
+		margin-top: 0; /* Para que el mensaje de derechos de autor esté pegado a la linea horizontal */
 	}
-	footer li {
-		justify-content: left;
-		text-align: left;
-	}
+	/*	Para que el titulo de la lista de contactos esté centrado horizontalmente*/
 	footer .contact-details-nav {
 		align-items: center;
 	}
+	/*	Para que los elementos de la lista de contactos estén centrados */
 	footer .contact-details-nav li {
 		justify-content: center;
 	}
-
-	footer nav {
-		align-items: flex-start;
-	}
-
+	/*Para cambiar el orden en que se muestran los elementos en la página Contact Us*/
 	.contact-article {
 		display: grid;
-		grid-template-areas:
+		grid-template-areas: /*Define las zonas de la cuadrícula, permitiendo colocar los elementos a contunuación*/
 			"hero      hero"
 			"top-left  right"
 			"bottom-left right";
+		column-gap: 50px; /*crear espacio entre las dos columnas*/
 	}
 	.hero {
-		grid-area: hero;
-		display: flex;
-		flex-direction: column;
+		grid-area: hero; /*Coloca el hero en la zona hero*/
 	}
-
 	.call-to-action-section {
-		grid-area: top-left;
+		grid-area: top-left; /*Coloca la sección de call-to-actionn en la zona superior izquierda*/
 		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
+		flex-direction: column; /*Para que los elementos estén en una columna*/
+		justify-content: flex-end; /*Para que los elementos estén alineados en la parte inferior del contenedor, pagados a la sección contact info*/
 	}
 	.call-to-action-section p {
-		margin: 10px 0 20px 0;
+		margin: 10px 0 20px 0; /*Adjustes pequeños para que parezca más a las capturas de pantalla*/
 	}
 
 	.contact-information-section {
-		grid-area: bottom-left;
-		height: fit-content;
+		grid-area: bottom-left; /*Coloca la sección de contact information en la zona inferior izquierda*/
+		height: fit-content; /*Para que no se extienda a la parte superior de la página*/
 	}
 	.contact-form-section {
-		grid-area: right;
+		grid-area: right; /*Coloca el contact form en la zona derecha*/
+	}
+	/************ highlights nav ************/
+	/*Para que la barra de navegación de los highlights esté fija en la parte superior de la página, a la izquierda del contenido principal*/
+	.highlights-nav-container {
+		position: fixed;
+		width: 180px;
+		transform: translate(
+			-210px
+		); /*se mueve la barra de navegación a la izquierda de la pantalla*/
+		top: 180px; /*180px de la parte superior de la página*/
+		padding: 10px;
+		border-radius: 10px;
+		box-shadow: var(--shadow-card);
+	}
+	.highlights-article {
+		margin-left: 230px; /*Para crear espacio a la izquierdad del contenido principal para la barra de navegación*/
+	}
+	.highlights-article .table-subhead {
+		text-align: left; /*Para que el texto esté alineado a la izquierda en la subcabecera de la tabla*/
+	}
+}
+
+@media (min-width: 1024px) {
+	/*************footer***************/
+	.footer-inner-container {
+		/* background-color: red; */
+		grid-template-columns: 1fr 1fr 1fr 1fr; /*4 columnas de igual ancho en pantallas grandes*/
+	}
+	.footer-inner-container h2 {
+		grid-column: 1; /*El título del footer ocupa solo la primera columna*/
+	}
+	footer nav {
+		align-items: flex-start; /*Los elementos de nav están alineados a la izquierda de sus contenedores*/
+	}
+	footer li {
+		justify-content: left; /*Los elementos de la lista de navegación están alineados a la izquierda de sus contenedores*/
+		text-align: left; /*El texto de los elementos de la lista de navegación está alineado a la izquierda*/
 	}
 }
 
@@ -652,11 +1052,13 @@ footer hr {
 		justify-content: center;
 		grid-column: span 3;
 	}
+	/*Limitar el ancho del texto para que parezca más a las capturas de pantalla*/
 	.contact-article .hero p {
 		margin: auto;
 		max-width: 35%;
 	}
+	/*Para que cada linea de la información de contacto esté en una única fila diferente */
 	.footer-inner-container {
-		grid-template-columns: auto 1fr 1fr auto;
+		grid-template-columns: 1fr 1fr 1fr auto; /*3 columnas de igual ancho y una columna que ocupa el ancho restante*/
 	}
 }

@@ -18,25 +18,33 @@
 		<link rel="icon" href="./images/favicon.png" />
 	</head>
 	<body>
+		<a class="fa-brands fa-whatsapp fa-xl whatsapp-icon"></a>
 		<header>
 			<nav>
 				<ul>
-					<li><a href="/index.html">Home</a></li>
-					<li><a href="#">Highlights</a></li>
-					<li id="current-page-link"><a href="/contact.html">Contact Us</a></li>
+					<li><a class="skip" href="#skip-to-here">Skip to main content</a></li>
+					<li class="animated-underline">
+						<a href="./index.html">Home</a>
+					</li>
+					<li class="animated-underline">
+						<a href="./highlights.html">Highlights</a>
+					</li>
+					<li id="current-page-link" class="animated-underline">
+						<a href="./contact.html">Contact Us</a>
+					</li>
 				</ul>
 			</nav>
+			<section class="full-width-hero">
+				<h1>Get in Touch</h1>
+				<p>
+					Join us in building a greener future. Let's make a difference
+					together.
+				</p>
+			</section>
 		</header>
 		<main class="contact-main">
 			<article class="contact-article">
-				<section class="hero">
-					<h1>Get in Touch</h1>
-					<p>
-						Join us in building a greener future. Let's make a difference
-						together.
-					</p>
-				</section>
-				<section class="call-to-action-section">
+				<section id="skip-to-here" class="call-to-action-section">
 					<h2>Want to collaborate on sustainability?</h2>
 					<p>
 						Fill out the form, and let's work together towards a sustainable
@@ -77,9 +85,9 @@
 									</option>
 									<optgroup label="Europe">
 										<option value="FR">France (+33)</option>
-										<option value="UK">UK (+44)</option>
 										<option value="DE">Germany (+49)</option>
 										<option value="ES">Spain (+34)</option>
+										<option value="UK">UK (+44)</option>
 									</optgroup>
 									<optgroup label="America">
 										<option value="USA">USA (+01)</option>
@@ -100,42 +108,42 @@
 						</fieldset>
 						<fieldset class="message-information-fieldset">
 							<legend>Message Information</legend>
-							<label for="user-type"
-								>User Type<span class="required-asterisk">*</span></label
-							>
+
 							<!-- <div id="user-type" required> -->
+							<fieldset id="user-type">
+								<legend>
+									User Type<span class="required-asterisk">*</span>
+								</legend>
+								<label for="user"
+									><input
+										type="radio"
+										id="user"
+										name="userType"
+										value="User"
+										required
+									/>User</label
+								>
 
-							<label for="user"
-								><input
-									type="radio"
-									id="user"
-									name="userType"
-									value="User"
-									required
-								/>User</label
-							>
+								<label for="company"
+									><input
+										type="radio"
+										id="company"
+										name="userType"
+										value="Company"
+										required
+									/>Company</label
+								>
 
-							<label for="company"
-								><input
-									type="radio"
-									id="company"
-									name="userType"
-									value="Company"
-									required
-								/>Company</label
-							>
-
-							<label for="ngo"
-								><input
-									type="radio"
-									id="ngo"
-									name="userType"
-									value="NGO"
-									required
-								/>NGO</label
-							>
-							<!-- </div> -->
-
+								<label for="ngo"
+									><input
+										type="radio"
+										id="ngo"
+										name="userType"
+										value="NGO"
+										required
+									/>NGO</label
+								>
+							</fieldset>
 							<label for="subject">Subject</label>
 
 							<input
@@ -149,9 +157,11 @@
 								>Message<span class="required-asterisk">*</span></label
 							>
 							<textarea
+								id="message"
 								name="message"
 								rows="5"
 								cols="30"
+								required
 								placeholder="Write your message here"
 							></textarea>
 						</fieldset>
@@ -184,90 +194,104 @@
 			</article>
 		</main>
 		<footer>
-			<h2>Sustainable Future</h2>
+			<div class="footer-inner-container">
+				<h2>Sustainable Future</h2>
 
-			<nav class="menu">
-				<h3>Menu</h3>
-				<menu>
-					<li><a class="footer-link" href="#">Home</a></li>
-					<li><a class="footer-link" href="#">Highlights</a></li>
-					<li><a class="footer-link" href="#">Contact Us</a></li>
-				</menu>
-			</nav>
-			<nav class="quick-links">
-				<h3>Quick Links</h3>
-				<menu>
-					<li><a class="footer-link" href="#">Privacy Policy</a></li>
-					<li><a class="footer-link" href="#">Terms of Service</a></li>
-					<li><a class="footer-link" href="#">Help Center</a></li>
+				<nav class="menu">
+					<h3>Menu</h3>
+					<menu>
+						<li><a class="footer-link" href="./index.html">Home</a></li>
+						<li>
+							<a class="footer-link" href="./highlights.html">Highlights</a>
+						</li>
+						<li><a class="footer-link" href="./contact.html">Contact Us</a></li>
+					</menu>
+				</nav>
+				<nav class="quick-links">
+					<h3>Quick Links</h3>
+					<menu>
+						<li><a class="footer-link" href="#">Privacy Policy</a></li>
+						<li><a class="footer-link" href="#">Terms of Service</a></li>
+						<li><a class="footer-link" href="#">Help Center</a></li>
+						<li>
+							<a class="footer-link" href="#"
+								><dfn
+									><abbr title="Frequency Asked Questions">FAQs</abbr></dfn
+								></a
+							>
+						</li>
+					</menu>
+				</nav>
+				<nav class="contact-details-nav">
+					<h3>Contact</h3>
+					<menu>
+						<li>
+							<a class="footer-link" href="tel:+11234567890">
+								<span class="fas fa-phone-alt contact-icon"></span> +1 (123)
+								456-7890
+							</a>
+						</li>
+						<li>
+							<a class="footer-link" href="mailto:info@sustainablefuture.org">
+								<span class="fas fa-envelope contact-icon"></span>
+								info@sustainablefuture.org
+							</a>
+						</li>
+						<li>
+							<span class="fas fa-clock contact-icon"></span>
+							<div class="opening-hours">
+								<p>Monday - Saturday</p>
+								<p>AM - 5:00 PM</p>
+							</div>
+						</li>
+					</menu>
+				</nav>
+				<hr />
+				<menu class="social-icons-menu">
 					<li>
-						<a class="footer-link" href="#"
-							><dfn><abbr title="Frequency Asked Questions">FAQs</abbr></dfn></a
-						>
+						<a
+							href="https://facebook.com"
+							target="_blank"
+							class="fab fa-facebook-f footer-link"
+							aria-label="Facebook"
+						></a>
+					</li>
+					<li>
+						<a
+							href="https://twitter.com"
+							target="_blank"
+							class="fab fa-x-twitter footer-link"
+							aria-label="Twitter"
+						></a>
+					</li>
+					<li>
+						<a
+							href="https://instagram.com"
+							target="_blank"
+							class="fab fa-instagram footer-link"
+							aria-label="Instagram"
+						></a>
+					</li>
+					<li>
+						<a
+							href="https://linkedin.com"
+							target="_blank"
+							class="fab fa-linkedin-in footer-link"
+							aria-label="LinkedIn"
+						></a>
 					</li>
 				</menu>
-			</nav>
-			<nav class="contact-details-nav">
-				<h3>Contact</h3>
-				<menu>
-					<li>
-						<a class="footer-link" href="tel:+11234567890">
-							<span class="fas fa-phone-alt contact-icon"></span> +1 (123)
-							456-7890
-						</a>
-					</li>
-					<li>
-						<a class="footer-link" href="mailto:info@sustainablefuture.org">
-							<span class="fas fa-envelope contact-icon"></span>
-							info@sustainablefuture.org
-						</a>
-					</li>
-					<li>
-						<span class="fas fa-clock contact-icon"></span>
-
-						<time> Monday - Saturday <br />9:00 AM - 5:00 PM</time>
-					</li>
-				</menu>
-			</nav>
-			<hr />
-			<menu class="social-icons-menu">
-				<li>
+				<p class="copyright-message">
+					© 2024 Sustainable Future. All images come from
 					<a
-						href="https://facebook.com"
+						class="freepik-attribution"
+						href="https://www.freepik.com"
 						target="_blank"
-						class="fab fa-facebook-f footer-link"
-						aria-label="Facebook"
-					></a>
-				</li>
-				<li>
-					<a
-						href="https://twitter.com"
-						target="_blank"
-						class="fab fa-x-twitter footer-link"
-						aria-label="Twitter"
-					></a>
-				</li>
-				<li>
-					<a
-						href="https://instagram.com"
-						target="_blank"
-						class="fab fa-instagram footer-link"
-						aria-label="Instagram"
-					></a>
-				</li>
-				<li>
-					<a
-						href="https://linkedin.com"
-						target="_blank"
-						class="fab fa-linkedin-in footer-link"
-						aria-label="LinkedIn"
-					></a>
-				</li>
-			</menu>
-			<p class="copyright-message">
-				© 2024 Sustaible Future. All images come from freepik with a CC0
-				license.
-			</p>
+						>freepik</a
+					>
+					with a CC0 license.
+				</p>
+			</div>
 		</footer>
 	</body>
 </html>

@@ -8,7 +8,7 @@
 			name="description"
 			content="Practical of the subject html and css of the UOC"
 		/>
-		<title>Pec 3 Practical</title>
+		<title>HTML y CSS Practical</title>
 
 		<link rel="stylesheet" href="./css/styles.css" />
 		<link
@@ -22,20 +22,25 @@
 		<header>
 			<nav>
 				<ul>
-					<li id="current-page-link" class="animated-underline">
-						<a href="/index.html">Home</a>
+					<li>
+						<a class="skip" href="#skip-to-here">Skip to main content</a>
 					</li>
-					<li class="animated-underline"><a href="#">Highlights</a></li>
+					<li id="current-page-link" class="animated-underline">
+						<a href="./index.html">Home</a>
+					</li>
 					<li class="animated-underline">
-						<a href="/contact.html">Contact Us</a>
+						<a href="./highlights.html">Highlights</a>
+					</li>
+					<li class="animated-underline">
+						<a href="./contact.html">Contact Us</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
 		<main>
 			<article>
-				<section class="hero">
-					<img src="./images/green-foot.png" />
+				<section id="skip-to-here" class="hero">
+					<img src="./images/green-foot.png" alt="" />
 					<div class="title-container">
 						<h1>Sustainable Future</h1>
 						<p>Empowering the world with green energy</p>
@@ -53,7 +58,7 @@
 					<h2>Our Key Initiatives</h2>
 
 					<article class="card">
-						<img src="./images/recycle-icon.png" />
+						<img src="./images/recycle-icon.png" alt="" />
 						<h3>Renewable Energy</h3>
 						<p>
 							Advancing solar, wind, and other renewable energy sources to
@@ -61,7 +66,7 @@
 						</p>
 					</article>
 					<article class="card">
-						<img src="./images/solar-icon.png" />
+						<img src="./images/solar-icon.png" alt="" />
 						<h3>Eco-Friendly Practices</h3>
 						<p>
 							Promoting environmentally friendly practices in industries and
@@ -69,7 +74,7 @@
 						</p>
 					</article>
 					<article class="card">
-						<img src="./images/tree-icon.png" />
+						<img src="./images/tree-icon.png" alt="" />
 						<h3>Green Innovation</h3>
 						<p>
 							Encouraging innovative solutions to reduce carbon footprint and
@@ -78,13 +83,16 @@
 					</article>
 				</section>
 				<section class="take-action-section">
-					<img src="./images/recycle.png" />
+					<img src="./images/recycle.png" alt="" />
 					<h2>Take Action for a Greener Planet</h2>
 					<p>
 						Connect with us to start your journey toward sustainable living and
 						help create a brighter future.
 					</p>
-					<button>Get in Touch</button>
+
+					<a class="call-to-action-button-from-link" href="./contact.html"
+						>Get in Touch</a
+					>
 				</section>
 			</article>
 		</main>
@@ -95,9 +103,11 @@
 				<nav class="menu">
 					<h3>Menu</h3>
 					<menu>
-						<li><a class="footer-link" href="#">Home</a></li>
-						<li><a class="footer-link" href="#">Highlights</a></li>
-						<li><a class="footer-link" href="#">Contact Us</a></li>
+						<li><a class="footer-link" href="./index.html">Home</a></li>
+						<li>
+							<a class="footer-link" href="./highlights.html">Highlights</a>
+						</li>
+						<li><a class="footer-link" href="./contact.html">Contact Us</a></li>
 					</menu>
 				</nav>
 				<nav class="quick-links">
@@ -132,8 +142,10 @@
 						</li>
 						<li>
 							<span class="fas fa-clock contact-icon"></span>
-
-							<time> Monday - Saturday <br />9:00 AM - 5:00 PM</time>
+							<div class="opening-hours">
+								<p>Monday - Saturday</p>
+								<p>AM - 5:00 PM</p>
+							</div>
 						</li>
 					</menu>
 				</nav>
@@ -173,8 +185,14 @@
 					</li>
 				</menu>
 				<p class="copyright-message">
-					© 2024 Sustaible Future. All images come from freepik with a CC0
-					license.
+					© 2024 Sustainable Future. All images come from
+					<a
+						class="freepik-attribution"
+						href="https://www.freepik.com"
+						target="_blank"
+						>freepik</a
+					>
+					with a CC0 license.
 				</p>
 			</div>
 		</footer>
